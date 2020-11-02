@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.leyou.httpdemo.HttpDemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.26 s <<< FAILURE! - in com.leyou.httpdemo.HttpDemoApplicationTests
+initializationError(com.leyou.httpdemo.HttpDemoApplicationTests)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.IllegalStateException: Could not load CacheAwareContextLoaderDelegate [class org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]: Unresolvable class definition; nested exception is java.lang.NoSuchMethodError: org.springframework.core.KotlinDetector.isKotlinReflectPresent()Z
+Caused by: java.lang.NoSuchMethodError: org.springframework.core.KotlinDetector.isKotlinReflectPresent()Z
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .active{
+
+    }
+</style>
+<body>
+
+<div id="app">
+    <input type="text" v-model="search">
+
+<div>
+{{birth()}}
+
+</div>
+    <div>
+        {{birth1}}
+    </div>
+
+
+    <div>
+        {{new Date(birthday).getFullYear()+"年"+new Date(birthday).getMonth()+"月"+new Date(birthday).getDay()+"日"}}
+
+    </div>
+<hr>
+
+    <input type="text" v-model="store">
+    <input type="button" v-bind:class="{active: store>0}" value="加入购物车">
+<hr>
+    <input type="button" v-bind:value="value"  @click="random=Math.random()">{{random}}
+    <span v-if="random>0.75">你看见我了 说明我是大于0.75</span>
+    <span v-else-if="random>0.5">你看见我了 说明我是大于0.5</span>
+    <span v-else-if="random>0.25">你看见我了 说明我是大于0.25</span>
+    <span v-else>你看见我了 说明我是大于0</span><br>
+
+    <span v-show="show">你看见我了 说明我是true show</span><br>
+    <hr>
+    <ul>
+        <li v-for="(val,key,index) in user">{{index}}{{val}}:{{key}}
+
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(user,index) in users">
+            {{index+1}},{{user.name}}-{{user.gender}}- {{user.age}}
+
+        </li>
+    </ul>
+    <hr>
+    <input type="checkbox" v-model="language" value="Java" />Java<br/>
+    <input type="checkbox" v-model="language" value="PHP" />PHP<br/>
+    <input type="checkbox" v-model="language" value="Swift" />Swift<br/>
+    <h1>
+        你选择了：{{language.join(',')}}
+    </h1>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            language: [],
+            users:[
+                {name:'柳岩', gender:'女', age: 21},
+                {name:'峰哥', gender:'男', age: 18},
+                {name:'范冰冰', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}],
+
+            user: {name:'柳岩', gender:'女', age: 21},
+            show:true,
+            random:0,
+            value:"点我呀",
+            store:0,
+            birthday:1529032123201, // 毫秒值
+            search:""
+        },
+        watch:{
+          search(newval1,oldval2){
+              //发送异步请求到后台接口
+console.log(newval1,oldval2)
+          }
+        },
+        methods:{
+
+            birth(){
+                const date=new Date(this.birthday);
+                return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+            },
+
+        },
+        computed:{//计算属性，里面也是定义方法，但这些方法必须有返回值，计算属性像数据模型一样使用
+            birth1(){
+                const date=new Date(this.birthday);
+                return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+            },
+        },
+
+    })
+</script>
+
+
+</body>
+</html>
